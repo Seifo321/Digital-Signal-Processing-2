@@ -15,6 +15,8 @@ cross_corre.m : A demo of generating cross correlation vector bewtween two rando
 
 Lab1.m : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** . the file shows how to generate random signal **u(n)** and input it to the wiener filter . the weiener filter tries to match between the input signal **u(n)** and the desired signal **d(n)** by reducing the MSE **Jmin** 
 
-wiener.m : just turned Lab1 into a function to be used in general.
+wiener.m : just a representation of Lab1 as function to be used in general.
 
 Lab2.m : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** by ** Gradient descent** algorithm instead of the weienr solution method.
+
+Gradient.m : just a representation of Lab2 as function to be used in general.
