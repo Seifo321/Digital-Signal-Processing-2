@@ -17,6 +17,6 @@ The repository contains the following MATLAB files:
 
 **wiener.m** : just a representation of Lab1 as function to be used in general.
 
-**Lab2.m** : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** by ** Gradient descent** algorithm instead of the weienr solution method.
+**Lab2.m** : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** by **Gradient descent** algorithm instead of the weienr solution method. 
 
 **Gradient.m** : just a representation of Lab2 as function to be used in general.
