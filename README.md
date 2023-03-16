@@ -6,7 +6,7 @@ To use these files, you should have MATLAB installed on your computer. You can d
 
 Once you have MATLAB installed, simply clone or download this repository to your computer. You can then open the MATLAB files in MATLAB and run them.
 
-Contents
+## Contents
 The repository contains the following MATLAB files:
 
 auto_corrs.m : A demo of generating an auto correlation matrix.
