@@ -9,13 +9,14 @@ Once you have MATLAB installed, simply clone or download this repository to your
 Contents
 The repository contains the following MATLAB files:
 
-fft_demo.m: A demo of the Fast Fourier Transform (FFT) algorithm in MATLAB. The file generates a random signal and shows how to compute its FFT, plot the magnitude and phase spectra, and perform inverse FFT to recover the original signal.
+auto_corrs.m : A demo of generating an auto correlation matrix.
 
-fir_filter_demo.m: A demo of designing and implementing a finite impulse response (FIR) filter in MATLAB. The file shows how to design a low-pass FIR filter using the windowing method and the Parks-McClellan algorithm, and how to apply the filter to a signal.
+cross_corre.m : A demo of generating cross correlation vector bewtween two random vectors.
 
-iir_filter_demo.m: A demo of designing and implementing an infinite impulse response (IIR) filter in MATLAB. The file shows how to design a low-pass IIR filter using the Butterworth and Chebyshev Type I and II filter design methods, and how to apply the filter to a signal.
+Lab1.m : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** . the file shows how to generate random signal **u(n)** and input it to the wiener filter . the weiener filter tries to match between the input signal **u(n)** and the desired signal **d(n)** by reducing the MSE **Jmin** 
 
-signal_generation_demo.m: A demo of generating and analyzing various types of signals in MATLAB. The file shows how to generate sinusoidal, pulse, and noise signals, and how to analyze their spectra and statistical properties.
+wiener.m : just a representation of Lab1 as function to be used in general.
 
-License
-The MATLAB files in this repository are released under the MIT License. You are free to use, modify, and distribute these files as long as you include the license file and give credit to the original author.
+Lab2.m : A demo of generating the wiener filter optimum weights and the and the corresponding minimzed mean square error **Jmin** by ** Gradient descent** algorithm instead of the weienr solution method.
+
+Gradient.m : just a representation of Lab2 as function to be used in general.
