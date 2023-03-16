@@ -1,4 +1,4 @@
-function [Jmin,w0] = weiner (u_n,d_n,nTabs)
+function [Jmin,w0] = wiener (u_n,d_n,nTabs)
 
 if nargin <= 2
     nTabs =1;
