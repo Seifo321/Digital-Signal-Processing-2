@@ -14,9 +14,9 @@ h_n = zeros(length(n),1);
 for i = 1 : length(n)
   h_n(i) = power(-0.9,n(i)) + power(0.8,n(i));
 end
-d_n = zeros(1, 10000);
+d_n = zeros( 1, 10000);
 for i = 1 : length(n)
-  d_n += h_n(i) * u_n 
+  d_n = d_n + h_n(i) * u_n ;
 end
 d_n = d_n/10;
 
