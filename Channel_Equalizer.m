@@ -7,7 +7,7 @@ x_n = randi([-1 1], 1, 11000);
 x_n = x_n(1001 : end)'; %throwing the frist 1000 samples
 
 %% the channel impulse response
-n = [0 1 2 3 4 5 6 7 8 9 10];
+n = 0:10;
 h_n = zeros(length(n),1);
 for i = 1 : length(n)
   h_n(i) = 1./ (1 + power(n(i)-5,2));
