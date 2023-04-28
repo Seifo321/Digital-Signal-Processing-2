@@ -19,7 +19,7 @@ if nargin < 4
 
 else
     for j = 1 : length(Mu)
-        w= zeros(nTabs, 1)
+        w= zeros(nTabs, 1);
         for i =  0 : 99 
             err = P - R*w;
             w = w + err * Mu(j);

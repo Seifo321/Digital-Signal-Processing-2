@@ -24,7 +24,7 @@ u=u(1:length(d));
 m=7;
 mu_i=[0.001 0.005 0.01];
 
-[j1 w1]= winner_filter(u,d,m);
+[j1 w1]= wiener(u,d,m);
 %figure
 %stem(h)
 figure
