@@ -31,7 +31,7 @@ d_n = delayseq(x_n, 8);
 [Jmin,w0]= wiener(u_n,d_n,nTabs);
 %% Steepest Descent solution
 Mu = [0.001, 0.005, 0.01];
-[j_sd , w_sd] = Gradient(u_n, d_n,nTabs,Mu);
+[j_sd , w_sd] = Gradient(u_n, d_n,nTabs, Mu,10000);
 
 %% LMS solution
 [av_e, av_w, w]= LMS(u_n,Mu,10000);

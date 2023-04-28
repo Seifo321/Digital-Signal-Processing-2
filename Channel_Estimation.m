@@ -29,7 +29,14 @@ w0 = flip(w0);
 
 
 %% Channel estimation with gradient algorithm 
-% Mu = [0.01 0.005 0.0015];
-[j_sd , w_sd] = Gradient(u_n, d_n,nTabs);
+Mu = [0.01 0.005 0.0015];
+[j_sd , w_sd] = Gradient(u_n, d_n,nTabs, Mu, 2000);
 
 w_sd=flip(w_sd);
+
+
+
+%% Channel estimation with gradient algorithm 
+
+
+[j_lms w_lms] = LMS (u_n, Mu, 2500 );

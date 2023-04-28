@@ -30,7 +30,7 @@ figure
     title("LMS Learning Curves")
     hold on
  end
- legend("Mu=0.001", "Mu=0.005" ,"Mu=0.01");
+    legend(sprintf('Mu = %s', num2str(mu(1))), sprintf('Mu = %s', num2str(mu(2))), sprintf('Mu = %s', num2str(mu(3)))) 
  hold off;
 % %%
 % for i2=1:n

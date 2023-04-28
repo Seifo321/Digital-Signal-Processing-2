@@ -53,4 +53,3 @@ for mu=mu_i
  plot(w(1:1000))
 
 end
-

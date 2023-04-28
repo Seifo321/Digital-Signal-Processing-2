@@ -52,4 +52,3 @@ R = auto_corrs(u_n, nTabs);
 P = cross_corre(u_n,d_n , nTabs);
 w0 = inv(R) * P;
 
-
