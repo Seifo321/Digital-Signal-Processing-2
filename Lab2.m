@@ -44,11 +44,9 @@ legend("Mu=0.1", "Mu=0.2" ,"Mu=0.3" ,"Mu=0.4","Mu=0.5")
 hold off;
 
 %w_opt = w;
-
-
 % estimating the optimum weights by W0 = R^-1 * p
 
 R = auto_corrs(u_n, nTabs);
 P = cross_corre(u_n,d_n , nTabs);
-w0 = inv(R) * P;
+w0 = R\P;
 

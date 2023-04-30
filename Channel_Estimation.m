@@ -19,7 +19,7 @@ d_n = zeros( 1, 10000);
 for i = 1 : length(n)
   d_n = d_n + h_n(i) * u_n ;
 end
-d_n = d_n/10;
+%d_n = d_n/10;
 d_n =conv(u_n,h_n);
 d_n = d_n(1: length(u_n));
 
@@ -34,9 +34,6 @@ Mu = [0.01 0.005 0.0015];
 
 w_sd=flip(w_sd);
 
-
-
 %% Channel estimation with gradient algorithm 
+[j_lms, w_lms1, w_lms2] = LMS (u_n, Mu, 2500 );
 
-
-[j_lms w_lms] = LMS (u_n, Mu, 2500 );
