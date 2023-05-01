@@ -10,15 +10,20 @@ end
 Amp = max(Rxx);
 Rxx = Rxx / Amp;
 lags = 0:K-1; % lags for plotting
+subplot(211)
 plot(lags, Rxx); % plot autocorrelation function
 xlabel('k');
 ylabel('R(k)');
 legend('a1 = 0.6');
 
-figure();
+
 for k = 0:K-1
     Rxx(k+1) = (1/(1-0.99^2))*0.99^k*sigma_epsilon; % calculate autocorrelation for lag k
 end
+Amp = max(Rxx);
+Rxx = Rxx / Amp;
+lags = 0:K-1; % lags for plotting
+subplot(212)
 plot(lags, Rxx); % plot autocorrelation function
 xlabel('k');
 ylabel('R(k)');
@@ -31,20 +36,21 @@ x(1) = randn; % set initial value of signal
 for n = 2:100
     x(n) = .6 * x(n-1) + sigma_epsilon * randn;
 end
-figure()
 % plot signal
+figure
+subplot(211)
 plot(x(1:100));
 xlabel('n');
 ylabel('Xn');
 title('AR Signal');
 legend('a1 = 0.6');
 
-figure();
 for n = 2:100
     x(n) = 0.99 * x(n-1) + sigma_epsilon * randn;
 end
 
 % plot signal
+subplot(212)
 plot(x(1:100));
 xlabel('n');
 ylabel('Xn');
