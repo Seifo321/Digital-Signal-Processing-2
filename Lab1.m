@@ -7,13 +7,20 @@ v2_n = v2_n(1001:end);
 x_n  = filter(1, [1 -0.9458], d_n);
 u_n= v2_n - x_n;
 jmin = zeros(1,10);
+sigma = zeros(1,10);
 for i = 1:10 
     nTabs = i;
     R = auto_corrs(u_n, nTabs);
     P = cross_corre(u_n,d_n , nTabs);
-    sigma = var(d_n);
+    sigma(i) = var(d_n);
     w0 = R\P;
-    jmin(i) = sigma - dot((P.'), w0);
+    jmin(i) = sigma(i) - dot((P.'), w0);
+		stem(i,jmin(i),'b','LineWidth',1.5);title("J_{min} Vs filter order");
+		xlabel("filter order");ylabel("J_{min}");hold on
+		set(gca,'FontWeight','bold')
+		set(gca,'TitleFontSizeMultiplier',1.5)
 end
-sigma_u = var(u_n);
-plot(jmin)
+%sigma_u = var(u_n);
+[min_j, min_idx] = min(jmin);
+fprintf('The best Wiener order that gives the least J_{min} is %f at order %d.\n', min_j, min_idx);
+
