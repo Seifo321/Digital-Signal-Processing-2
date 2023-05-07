@@ -29,17 +29,17 @@ mu_i=[0.001 0.005 0.01];
 %stem(h)
 figure
 stem(w1)
-[P R]=correlation(u,d,m);
+%[P R]=correlation(u,d,m);
 [R1] = auto_corrs(u,m);
 [p1] = cross_corre(u,d,m);
-for mu=mu_i
-    
-[j2 w2]=SD(u,d,m,mu);
- 
-figure
- stem(w2)
- mms=min(j2)
-end
+% for mu=mu_i
+%     
+% [j2 w2]=SD(u,d,m,mu);
+%  
+% figure
+%  stem(w2)
+%  mms=min(j2)
+% end
 n=100;
 %%
 for mu=mu_i
@@ -50,6 +50,6 @@ for mu=mu_i
   figure
    plot(av_w(1:1000))
     hold on
- plot(w(1:1000))
+  plot(w(1:1000))
 
 end
