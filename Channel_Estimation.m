@@ -30,5 +30,24 @@ Mu = [0.01 0.005 0.0015];
 w_sd=flip(w_sd);
 
 %% Channel estimation with gradient algorithm 
-[j_lms, w_lms1, w_lms2] = LMS (u_n, Mu, 2500 );
+for j = 1:length(Mu)
+    for k = 1 :100
+        u_n = 1 * randn(1,11000);
+        u_n = u_n(1001 : end);
+        u_n = u_n - mean(u_n);
+        
+        d_n =conv(u_n,h_n);
+        d_n = d_n(1: length(u_n));
+        
+        [e_lms, w_lms] = LMS3 (u_n,d_n,11, Mu(j), 2500 );
 
+           e_total(:,k)=e_lms.^2;
+           W_total(:,k)=w_lms;
+
+        
+    end
+    
+    av_w(j,:) = mean(transpose(W_total))';    
+    av_e(j,:) =transpose(mean(e_total)');
+
+end

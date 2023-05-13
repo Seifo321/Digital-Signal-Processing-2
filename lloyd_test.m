@@ -3,7 +3,7 @@ clear, clc, close all;
 lambda = 50;
 x = poissrnd(lambda, 1, 2000);
 x = x(1001:end);
-M = 16;
+M = 9;
 [y, b, mse, q] = lloyd_max_quantizer(x, M);
 diff_y = diff(y);
 % plot the input signal x

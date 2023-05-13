@@ -33,10 +33,7 @@ x_KLT_re = reshape(inv(A) * y_KLT_block , [10000 , 1]);
 mse_KLT = sqrt(mean(x - x_KLT_re).^2);
 figure;
 
-stem(x_n(1000:1050), 'x-');hold on ;
-stem(x_KLT_re(1000:1050),'o-');hold off
-title("Tx original signal Vs Rx signal ");
-legend('Tx origina','Rx signal');
+
 
 
 
@@ -63,13 +60,9 @@ end
 Y_DCT_block = C * x_block; 
 Y_DCT = reshape(Y_DCT_block , [10000, 1]);
 % VERIFICATION
-x_DCT_re = reshape(inv(C) * Y_DCT_block , [10000 , 1]);
-mse_DCT = sqrt(mean(x - x_DCT_re).^2);
-figure;
-stem(x_n(1000:1050), 'x-');hold on ;
-stem(x_DCT_re(1000:1050),'o-');hold off
-title("Tx original signal Vs Rx signal ");
-legend('Tx origina','Rx signal');
+% x_DCT_re = reshape(inv(C) * y_DCT_block , [10000 , 1]);
+% mse_DCT = sqrt(mean(x - x_DCT_re).^2);
+
     
 figure ;
 subplot(311);
@@ -77,7 +70,7 @@ stem(x(1:50));
 title("original signal");
 subplot(312);
 stem(Y_KLT(1:50));
-title("KLT effect");
+title("KLT signal");
 subplot(313);
 stem(Y_DCT(1:50));
-title("DCT effect");
+title("DCT signal");
