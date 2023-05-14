@@ -39,7 +39,7 @@ thershold = 5.6278./2;
 %%
 % Calculate pitch period as distance between peaks
 pitch_period = mode(diff(locs)); 
-pitch(:,i)=pitch_period
+pitch(:,i)=pitch_period;
 
 % Determine voiced or unvoiced speech based on pitch period
 if pitch_period <= 20   
