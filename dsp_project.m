@@ -63,15 +63,13 @@ for i = 1:num_frames
     noise(:,i) = predicted_signal - windowed_frames(:,i);
 
 
-<<<<<<< HEAD
     % Compute LSFs from LPC coefficients
     lsfs(:,i) = poly2lsf(a_k(:,i));
-=======
+
 %%
 % Calculate pitch period as distance between peaks
 pitch_period = mode(diff(locs)); 
 pitch(:,i)=pitch_period;
->>>>>>> b9c212200578535b2f94204edef1101f918e525d
 
     % Compute LAR coefficients from LSFs
     lar_coeffs(:,i) = diff([0; log(lsfs(:,i))]);
