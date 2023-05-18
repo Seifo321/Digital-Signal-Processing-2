@@ -3,11 +3,14 @@ function LarCoefficients = lar(lpc_coefficients)
 
     for i = 1 : length(lpc_coefficients)
         if lpc_coefficients{i, 1}.voiced == 0
-            LarCoefficients{i,1} = struct('short',poly2rc(lpc_coefficients{i, 1}.short));
+			lar_short = poly2rc(lpc_coefficients{i, 1}.short);
+            LarCoefficients{i} = struct('short',lar_short);
 
-        else
-            LarCoefficients{i,1} = struct('long', ploy2rc(lpc_coefficients{i, 1}.long),...
-                'short',poly2rc(lpc_coefficients{i, 1}.short));
+		else
+			lar_short = poly2rc(lpc_coefficients{i, 1}.short);
+			lar_long = poly2rc(lpc_coefficients{i, 1}.long);
+            LarCoefficients{i} = struct('long',lar_long ,...
+                'short',lar_short);
         end
             
             
