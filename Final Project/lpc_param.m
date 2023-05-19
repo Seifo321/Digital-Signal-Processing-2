@@ -14,14 +14,22 @@ for i = 1:num_frames
         lpc_order = 6; % Set the desired order for short-term LPC
         [A_short, ~] = lpc(currentFrame, lpc_order);
 
-        lpc_coefficients{i} = struct('voiced', true, 'long', A_long, 'short', A_short);
+        residual_frame = filter([A_long A_short], 1, currentFrame);
+        
+        
+        lpc_coefficients{i} = struct('voiced', true, 'long', A_long, 'short', A_short,'residual',residual_frame );
 
+        
+
+        
+        
     else % Unvoiced Frame
         % Short-Term LPC Analysis
         lpc_order = 6; % Set the desired order for short-term LPC
         [A_short, ~] = lpc(currentFrame, lpc_order);
+        residual_frame = filter(A_short, 1, currentFrame);
 
-        lpc_coefficients{i} = struct('voiced', false, 'short', A_short);
+        lpc_coefficients{i} = struct('voiced', false, 'short', A_short,'residual',residual_frame);
 
     end
 

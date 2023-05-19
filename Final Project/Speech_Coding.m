@@ -30,6 +30,7 @@ dequantized_data = pcm(quantized_data, 16, 's');
 
 lpc_coefficients = lpc_param(quantized_data, voicedUnvoiced, params);
 lar_coefficients = lar(lpc_coefficients);
+noise_codebook = codebook(params);
 
 
 % synthesizedSignal = lpc_param([], [], params, 's', lpc_coefficients, pitchPeriods);
