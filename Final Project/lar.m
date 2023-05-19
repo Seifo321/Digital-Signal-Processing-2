@@ -1,4 +1,4 @@
-function LarCoefficients = Lar_coeff(lpc_coefficients)
+function LarCoefficients = lar(lpc_coefficients)
     LarCoefficients = cell(length(lpc_coefficients), 1);
 
     for i = 1 : length(lpc_coefficients)
