@@ -1,10 +1,10 @@
-function idx = compare(residual_frame)
+function noise_index = compare(residual_frame, codebook)
 
 % Assuming 'codebook' is your codebook of stored noise vectors
 % 'voiceSignal' is the voice signal with noise
 
 % Initialize an array to store the indices of the closest noise vectors
-closestIndices = zeros(size(residual_frame, 1), 1);
+noise_index = zeros(size(residual_frame, 1), 1);
 
 % Iterate over each frame of the voice signal
 for i = 1:size(residual_frame, 1)
@@ -28,16 +28,7 @@ for i = 1:size(residual_frame, 1)
     end
     
     % Store the index of the closest noise vector
-    closestIndices(i) = maxIndex;
+    noise_index(i) = maxIndex;
 end
-
-
-
-
-
-
-
-
-
 
 end

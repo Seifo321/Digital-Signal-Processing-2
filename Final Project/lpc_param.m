@@ -1,5 +1,6 @@
-function lpc_coefficients = lpc_param(frames, voicedFlag, params)
-
+function [lpc_coefficients, residual_frame] = lpc_param(frames, voicedFlag, params)
+	
+	residual_frame = zeros(params.num_frames,params.frame_length);
     num_frames = params.num_frames; % Total number of frames
     lpc_coefficients = cell(num_frames, 1); % Cell array to store LPC coefficients
 for i = 1:num_frames
@@ -13,23 +14,19 @@ for i = 1:num_frames
         % Short-Term LPC Analysis
         lpc_order = 6; % Set the desired order for short-term LPC
         [A_short, ~] = lpc(currentFrame, lpc_order);
+		
+		residual_frame(i,:) = filter([A_long, A_short], 1, currentFrame);
+		
+        lpc_coefficients{i} = struct('voiced', true, 'long', A_long, 'short', A_short);
 
-        residual_frame = filter([A_long A_short], 1, currentFrame);
-        
-        
-        lpc_coefficients{i} = struct('voiced', true, 'long', A_long, 'short', A_short,'residual',residual_frame );
-
-        
-
-        
-        
     else % Unvoiced Frame
         % Short-Term LPC Analysis
         lpc_order = 6; % Set the desired order for short-term LPC
         [A_short, ~] = lpc(currentFrame, lpc_order);
-        residual_frame = filter(A_short, 1, currentFrame);
 
-        lpc_coefficients{i} = struct('voiced', false, 'short', A_short,'residual',residual_frame);
+        lpc_coefficients{i} = struct('voiced', false, 'short', A_short);
+		
+		residual_frame(i,:) = filter(A_short, 1, currentFrame);
 
     end
 

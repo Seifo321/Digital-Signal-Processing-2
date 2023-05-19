@@ -28,15 +28,17 @@ dequantized_data = pcm(quantized_data, 16, 's');
 % Determine each frame is voiced or not and get pitch period
 [voicedUnvoiced, pitchPeriods] = voicedUnvoicedDetection(quantized_data, params, 90);
 
-lpc_coefficients = lpc_param(quantized_data, voicedUnvoiced, params);
-lar_coefficients = lar(lpc_coefficients);
+[lpc_coefficient_t, residual_frame] = lpc_param(quantized_data, voicedUnvoiced, params);
+
+lar_coefficients = lar(lpc_coefficient_t, 'a');
+
 noise_codebook = codebook(params);
 
+noise_index = compare(residual_frame, noise_codebook);
 
-% synthesizedSignal = lpc_param([], [], params, 's', lpc_coefficients, pitchPeriods);
-
+lpc_coefficient_r = lar(lar_coefficients, 's');
 % concatinating frames
 unframed_data = framing(dequantized_data, sample_rate, 's');
 
 % play the reconstructed audio
-sound(unframed_data, sample_rate);
+% sound(unframed_data, sample_rate);
