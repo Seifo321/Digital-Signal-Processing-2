@@ -1,5 +1,5 @@
 # Digital-Signal-Processing-2
-#SPOILING ALERT ⚠️
+# SPOILING ALERT ⚠️
 We r sorry if the repo may look messy, just gonna be handled as soon as possible :)  
 This repository contains MATLAB files for Digital Signal Processing (DSP). These files are intended to be used as educational and reference material for anyone learning about DSP or working on DSP projects.
 
