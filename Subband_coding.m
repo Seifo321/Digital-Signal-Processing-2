@@ -1,7 +1,7 @@
 clear, clc, close all;
 
 % Read the grayscale image
-image = imread('q3.png');  % Replace 'your_image.png' with the path to your grayscale image
+image = imread('q3.png');
 
 if length(size(image)) == 3
     image = rgb2gray(image);
