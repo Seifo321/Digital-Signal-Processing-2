@@ -53,11 +53,10 @@ for i = 1 : num_stages
 end
 
 % low_freq_image = uint8(low_filtered_image(length(H0):end-length(H0)+1, length(H0):end-length(H0)+1));
-% high_freq_image = uint8(low_filtered_image(length(H0):end-length(H0)+1, length(H0):end-length(H0)+1));
 
+% high_freq_image = uint8(low_filtered_image(length(H0):end-length(H0)+1, length(H0):end-length(H0)+1));
 low_freq_image = uint8(low_filtered_image);
 high_freq_image = uint8(high_filtered_image);
-
 % Display the original and filtered images
 figure;
 subplot(3, 1, 1);
