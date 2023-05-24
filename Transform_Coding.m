@@ -64,7 +64,7 @@ for i = 0:N-1
 end
 % verification process OF DCT matrix 
 % % Create DCT matrix of order N
-% D = dctmtx(N);
+% C = dctmtx(N);
 % mse = sqrt(mean(C - D).^2);
 
 Y_DCT_block = C * x_block; 
