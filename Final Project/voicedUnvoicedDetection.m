@@ -23,7 +23,7 @@ function [voicedUnvoiced, pitchPeriods] = voicedUnvoicedDetection(audioFrames, p
 		[~, locs] = findpeaks(autocorr);
 		
 		% Calculate pitch period as the average distance between peaks
-		pitchPeriods(i) = mean(diff(locs));
+		pitchPeriods(i) = mean(diff(locs))
 		
 		% Find the peak in the autocorrelation function (excluding the central peak)
 		[maxPeak, ~] = max(abs(autocorr(floor(length(autocorr)/2)+1:end)));
@@ -50,10 +50,10 @@ function [voicedUnvoiced, pitchPeriods] = voicedUnvoicedDetection(audioFrames, p
 	% just to make sure that we classified the frames correctly and this
 	% apply to eric.wav
 % 	figure
-% 	subplot(211)
-% 	plot(xcorr(audioFrames(:, 103))) % unvoiced
-% 	hold on
-% 	subplot(212)
-% 	plot(xcorr(audioFrames(:, 104))) % voiced
+	subplot(211)
+	plot(xcorr(audioFrames(:, 103))) % unvoiced
+	hold on
+	subplot(212)
+	plot(xcorr(audioFrames(:, 104))) % voiced
 
 end

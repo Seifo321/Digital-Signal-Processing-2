@@ -1,4 +1,4 @@
-function noise_vectors = codebook(params)
+ function noise_vectors = codebook(params)
    % Number of noise vectors in the codebook
     numVectors = 1024;
 

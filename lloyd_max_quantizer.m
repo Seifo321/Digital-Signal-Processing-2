@@ -1,7 +1,7 @@
 function [y, b, mse, q] = lloyd_max_quantizer(x, M)
 
 % Set the decision boundaries
-b = linspace(min(x), max(x), M-1);
+b = linspace(0, max(x), M-1);
 
 % Initialize variables
 y = zeros(1,M);
@@ -12,11 +12,11 @@ while true
     % Update reconstruction levels
     for i = 1:M
         if i == 1
-            y(i) = (b(i) + min(x)) / 2;
+            y(i) = abs ((b(i) + min(x)) / 2);
         elseif i == M
-            y(i) = (b(i-1) + max(x)) / 2;
+            y(i) = abs ((b(i-1) + max(x)) / 2);
         else
-            y(i) = mean(x(x > b(i-1) & x <= b(i)));
+            y(i) = abs( mean(x(x > b(i-1) & x <= b(i))));
         end
     end
     
