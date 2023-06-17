@@ -7,5 +7,4 @@
 
     % Generate random noise vectors and normalize them
     noise_vectors = randn(numVectors, vectorLength);
-    noise_vectors = noise_vectors ./ vecnorm(noise_vectors, 2, 2);
 end

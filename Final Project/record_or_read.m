@@ -32,13 +32,13 @@ function [audio_data, sample_rate] = record_or_read(option)
 			if size(audio_data, 1) > sample_rate * 4
 					audio_data = audio_data(1:sample_rate * 4, :);
 			end
-			target_length = 192000;
-			if length(audio_data)~=target_length
-			% Resample audio_data to a new length of 192000 samples
-			audio_data = resample(audio_data, target_length, length(audio_data));
-			% Display text indicating the end of reading and resampling
-			% disp('Reading and resampling ended.');
-			end
+% 			target_length = 192000;
+% 			if length(audio_data)~=target_length
+% 			% Resample audio_data to a new length of 192000 samples
+% 			audio_data = resample(audio_data, target_length, length(audio_data));
+% 			% Display text indicating the end of reading and resampling
+% 			% disp('Reading and resampling ended.');
+% 			end
 			% Save the recorded audio to a file called "Readed Audio.wav"
 			audiowrite('Readed Audio.wav', audio_data, sample_rate);
 	else

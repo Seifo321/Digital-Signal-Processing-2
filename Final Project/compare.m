@@ -4,16 +4,16 @@ function noise_index = compare(residual_frame, codebook)
 % 'voiceSignal' is the voice signal with noise
 
 % Initialize an array to store the indices of the closest noise vectors
-noise_index = zeros(size(residual_frame, 1), 1);
+noise_index = zeros(size(residual_frame, 2), 1);
 
 % Iterate over each frame of the voice signal
-for i = 1:size(residual_frame, 1)
+for i = 1:size(residual_frame, 2)
     % Extract the current frame from the voice signal
-    currentFrame = residual_frame(i, :);
+    currentFrame = residual_frame(:, i);
     
     % Initialize the maximum similarity and index
     maxSimilarity = -inf;
-    maxIndex = -1;
+    maxIndex = 1;
     
     % Compare the characteristics of the current frame to each noise vector in the codebook
     for j = 1:size(codebook, 1)

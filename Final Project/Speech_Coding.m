@@ -22,33 +22,39 @@ end
 % Quantize the data to 8 bits
 quantized_data = pcm(framed_data, 16, 'a');
 
-% Dequantize the data
-% dequantized_data = pcm(quantized_data, 16, 's');
-
 % Determine each frame is voiced or not and get pitch period
-[voicedUnvoiced, pitchPeriods] = voicedUnvoicedDetection(quantized_data, params, 90);
+[voiced] = VUnV(quantized_data);
+PitchPeriod = getPitchPeriod(voiced, quantized_data);
+[STP , LTP, Residual ] = GetLPC(voiced , quantized_data , params.num_frames);
 
-[lpc_coefficient_t, residual_frame_t] = lpc_param(quantized_data, voicedUnvoiced, params);
+% [lpc_coefficient_t, residual_frame_t] = lpc_param(framed_data, voiced, params);
+% lar_STP = lar(STP, 'a');
+% lar_LTP = lar(LTP, 'a');
+quantized_STP = pcm(STP, 16, 'a');
+quantized_LTP = pcm(LTP, 16, 'a');
 
-lar_coefficients = lar(lpc_coefficient_t, 'a');
-quantized_lar_coeff = quantized_lar(lar_coefficients);
+power = calculatePower(framed_data, params.num_frames);
 
 noise_codebook = codebook(params);
 
-noise_index = compare(residual_frame_t, noise_codebook);
+noise_index = compare(Residual, noise_codebook);
 
-lpc_coefficient_r = lar(quantized_lar_coeff, 's');
+% lpc_STP= lar(quantized_STP, 's');
+% lpc_LTP= lar(quantized_LTP, 's');
 
-residual_frame_r = zeros(params.num_frames,params.frame_length);
+residual_frame_r = zeros(params.frame_length,params.num_frames);
 
 for i = 1: params.num_frames
-	residual_frame_r(i, :) = noise_codebook(noise_index(i), :);
+	residual_frame_r(:, i) = noise_codebook(noise_index(i), :);
 end
-
-reconstructedSignal = generate_throat(lpc_coefficient_r, residual_frame_r, params);
-
+output = reconstructFrame(voiced, power, residual_frame_r, quantized_STP, quantized_LTP, PitchPeriod, params.num_frames);
+power_r = calculatePower(output, params.num_frames);
+% frame_synthesis = synthesis(residual_frame_r, STP, LTP, params.num_frames);
+        
 % concatinating frames
-unframed_data = framing(reconstructedSignal', sample_rate, 's');
+unframed_data = framing(output, sample_rate, 's');
 
 % play the reconstructed audio
 sound(unframed_data, sample_rate);
+
+
