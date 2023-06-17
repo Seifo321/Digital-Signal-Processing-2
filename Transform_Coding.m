@@ -1,10 +1,11 @@
 clear; clc; close all;
 
 [x_o, fs] = audioread("eric.wav");
-x_n = x_o(90001 : 100000);
+x_n = 3 * x_o(90001 : 100000);
 b = [1 0.85];
 nTabs = 10;
-x = filter(b, 1, x_n);
+% x = filter(b, 1, x_n);
+x = x_n;
 R = auto_corrs(x, nTabs);
 [V, D] = eig(R);
 

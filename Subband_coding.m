@@ -43,22 +43,23 @@ for i = 1 : num_stages
 
         flag = 1;
     end
+%     figure();
     
 end
 
 
-low_freq_image = uint8(low_filtered_image);
-high_freq_image = uint8(high_filtered_image);
+% low_freq_image = uint8(low_filtered_image);
+% high_freq_image = uint8(high_filtered_image);
 
 % Display the original and filtered images
 figure;
 subplot(3, 1, 1);
-imshow(image);
+imgsc(image);
 title('Original Image');
 subplot(3, 1, 2);
-imshow(low_freq_image);
+imgsc(low_freq_image);
 title('compressed image low freq');
 
 subplot(3, 1, 3);
-imshow(high_freq_image);
+imgsc(high_freq_image);
 title('compressed image high freq');

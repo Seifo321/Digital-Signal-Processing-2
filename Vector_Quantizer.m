@@ -51,13 +51,13 @@ block_means = squeeze(mean(mean(image_blocks, 1), 2));
 image_blocks = image_blocks(:, :, sorted_indices);
 
 % Initialize codebooks
-codebook_sizes = [4 8 16 32 64 128 256];
+codebook_sizes = [32 64 128 256];
 
 % Create a single figure for all images
 figure;
 
 % Display original image
-subplot(4, 2, 1);
+subplot(3, 2, 1);
 imshow(new_image);
 title('Original');
 
@@ -124,7 +124,7 @@ for idx = 1:length(codebook_sizes)
     reconstructed_image = uint8(reconstructed_image);
     
     % Display quantized image
-    subplot(4, 2, idx + 1);
+    subplot(3, 2, idx + 1);
     imshow(reconstructed_image);
     title(['Quantized Image (K=' num2str(codebook_size) ')']);
 end
