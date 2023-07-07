@@ -35,7 +35,19 @@ quantized_LTP = pcm(LTP, 16, 'a');
 
 power = calculatePower(framed_data, params.num_frames);
 
+<<<<<<< Updated upstream
+=======
+lpc_coefficients = lpc_param(quantized_data, voicedUnvoiced, params);
+lar_coefficients = Lar_coeff(lpc_coefficients);
+>>>>>>> Stashed changes
 noise_codebook = codebook(params);
+% mat = cell2mat(lpc_coefficients,lar_coefficients);
+
+quantized = quantized_lar(lpc_coefficients,lar_coefficients);
+
+
+
+
 
 noise_index = compare(Residual, noise_codebook);
 
